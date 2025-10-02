@@ -1,0 +1,49 @@
+class JetpurInfoSystem:
+    """A basic information system for Jetpur city."""
+    
+    def __init__(self):
+        self.city_facts = {
+            "Location": "Rajkot district, Gujarat, India",
+            "Population": "Approx. 120,000 (2023)",
+            "Known For": "Hub for dyeing, printing, and textile industry, especially for cotton sarees and dress materials."
+        }
+        self.key_sectors = [
+            {"name": "Textile Printing", "type": "Industry", "description": "Jetpur is a major center for block printing and screen printing of textiles."},
+            {"name": "Dyeing Units", "type": "Industry", "description": "Hundreds of small and large units specializing in fabric coloring and processing."},
+            {"name": "Navagadh Fort", "type": "Historical Landmark", "description": "A local historical site near the town."}
+        ]
+
+    def get_city_fact(self, fact_name):
+        """Retrieves and prints a specific city fact."""
+        if fact_name in self.city_facts:
+            print(f"{fact_name}: {self.city_facts[fact_name]}")
+        else:
+            print(f"Fact not found: {fact_name}")
+
+    def search_sectors(self, search_term):
+        """Searches for sectors or landmarks by name or type (case-insensitive)."""
+        print(f"\n--- Search Results for '{search_term}' ---")
+        lower_search_term = search_term.lower()
+        found = False
+        
+        for sector in self.key_sectors:
+            if lower_search_term in sector["name"].lower() or lower_search_term in sector["type"].lower():
+                print(f"Name: {sector['name']}")
+                print(f"Type: {sector['type']}")
+                print(f"Description: {sector['description']}")
+                print("-" * 40)
+                found = True
+        
+        if not found:
+            print("No matching sectors or landmarks found.")
+
+# Main script logic
+info_system = JetpurInfoSystem()
+
+# Display general facts
+info_system.get_city_fact("Location")
+info_system.get_city_fact("Known For")
+
+# Search for sectors
+info_system.search_sectors("Printing")
+info_system.search_sectors("Landmark")
